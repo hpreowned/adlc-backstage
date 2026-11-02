@@ -25,7 +25,7 @@ spec:
         kitRef:
           title: Kit version
           type: string
-          default: v0.1.7
+          default: v0.1.8
           description: Git tag of hpreowned/adlc-kit. Keep the default unless the platform team says otherwise.
         skillProfile:
           title: Graphify skill profile

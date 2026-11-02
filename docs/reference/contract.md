@@ -1,5 +1,5 @@
 !!! info "Mirrored, do not edit here"
-    Source: [`policy/CONTEXT_CONTRACT.md`](https://github.com/hpreowned/adlc-kit/blob/v0.1.7/policy/CONTEXT_CONTRACT.md) at `v0.1.7`. Change it there; `make sync` brings it back.
+    Source: [`policy/CONTEXT_CONTRACT.md`](https://github.com/hpreowned/adlc-kit/blob/v0.1.8/policy/CONTEXT_CONTRACT.md) at `v0.1.8`. Change it there; `make sync` brings it back.
 
 # CONTEXT_CONTRACT.md — what every repo owes an agent
 

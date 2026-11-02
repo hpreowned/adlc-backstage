@@ -6,7 +6,7 @@ on:
   workflow_dispatch:
     inputs:
       target_repo: { description: "owner/repo to onboard", required: true, type: string }
-      kit_ref: { description: "kit tag", required: false, default: v0.1.7, type: string }
+      kit_ref: { description: "kit tag", required: false, default: v0.1.8, type: string }
       skill_profile: { description: "lean | vendor", required: false, default: lean, type: string }
 jobs:
   onboard:

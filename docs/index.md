@@ -6,7 +6,7 @@ it helps. One CLI, `adlc`, and nothing outside the repo.
 
 | this site describes | pinned at |
 |---|---|
-| kit `hpreowned/adlc-kit` | <!-- adlc:kit-ref -->`v0.1.7`<!-- /adlc:kit-ref --> |
+| kit `hpreowned/adlc-kit` | <!-- adlc:kit-ref -->`v0.1.8`<!-- /adlc:kit-ref --> |
 | pilot evidence `hpreowned/adlc-pilot` | <!-- adlc:pilot-ref -->`c947356`<!-- /adlc:pilot-ref --> |
 
 Pages marked *Mirrored* are copied from those sources at those refs by `make sync`; CI fails

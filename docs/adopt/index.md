@@ -1,5 +1,5 @@
 !!! info "Mirrored, do not edit here"
-    Source: [`ADOPT.md`](https://github.com/hpreowned/adlc-kit/blob/v0.1.7/ADOPT.md) at `v0.1.7`. Change it there; `make sync` brings it back.
+    Source: [`ADOPT.md`](https://github.com/hpreowned/adlc-kit/blob/v0.1.8/ADOPT.md) at `v0.1.8`. Change it there; `make sync` brings it back.
 
 # ADOPT.md — make a repo agent-ready in 15 minutes
 
@@ -16,8 +16,8 @@ is a kit bug: note the time and what you did in `results/adoption-test.md` and f
 
 ## 0. Install the kit (≈1 min)
 ```bash
-uv tool install "git+https://github.com/hpreowned/adlc-kit@v0.1.7"
-adlc --version          # adlc 0.1.7
+uv tool install "git+https://github.com/hpreowned/adlc-kit@v0.1.8"
+adlc --version          # adlc 0.1.8
 ```
 
 ## 1. Onboard the repo (≈1 min)

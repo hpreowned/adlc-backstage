@@ -1,5 +1,5 @@
 !!! info "Mirrored, do not edit here"
-    Source: [`harness/EVENTS_SCHEMA.md`](https://github.com/hpreowned/adlc-kit/blob/v0.1.7/harness/EVENTS_SCHEMA.md) at `v0.1.7`. Change it there; `make sync` brings it back.
+    Source: [`harness/EVENTS_SCHEMA.md`](https://github.com/hpreowned/adlc-kit/blob/v0.1.8/harness/EVENTS_SCHEMA.md) at `v0.1.8`. Change it there; `make sync` brings it back.
 
 # Copilot CLI `events.jsonl` — observed schema (CLI 1.0.73)
 

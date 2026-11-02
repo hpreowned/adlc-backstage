@@ -1,5 +1,5 @@
 # Pinned sources this site mirrors. Bump here, run `make sync`, commit the diff.
 KIT_REPO=hpreowned/adlc-kit
-KIT_REF=v0.1.7
+KIT_REF=v0.1.8
 PILOT_REPO=hpreowned/adlc-pilot
 PILOT_REF=c9473565eb5f4212fb3d154415c8647eb3356801

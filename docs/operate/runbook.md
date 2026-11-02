@@ -1,5 +1,5 @@
 !!! info "Mirrored, do not edit here"
-    Source: [`monitor/RUNBOOK.md`](https://github.com/hpreowned/adlc-kit/blob/v0.1.7/monitor/RUNBOOK.md) at `v0.1.7`. Change it there; `make sync` brings it back.
+    Source: [`monitor/RUNBOOK.md`](https://github.com/hpreowned/adlc-kit/blob/v0.1.8/monitor/RUNBOOK.md) at `v0.1.8`. Change it there; `make sync` brings it back.
 
 # monitor/RUNBOOK.md — operating the ADLC layer
 

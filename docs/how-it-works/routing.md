@@ -1,5 +1,5 @@
 !!! info "Mirrored, do not edit here"
-    Source: [`template/ROUTING.md`](https://github.com/hpreowned/adlc-kit/blob/v0.1.7/template/ROUTING.md) at `v0.1.7`. Change it there; `make sync` brings it back.
+    Source: [`template/ROUTING.md`](https://github.com/hpreowned/adlc-kit/blob/v0.1.8/template/ROUTING.md) at `v0.1.8`. Change it there; `make sync` brings it back.
 
 ## Context routing (kit-owned — do not edit; `adlc init` rewrites this section)
 

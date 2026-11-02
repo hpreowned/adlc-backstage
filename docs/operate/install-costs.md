@@ -1,5 +1,5 @@
 !!! info "Mirrored, do not edit here"
-    Source: [`INSTALL_MINUTES.md`](https://github.com/hpreowned/adlc-kit/blob/v0.1.7/INSTALL_MINUTES.md) at `v0.1.7`. Change it there; `make sync` brings it back.
+    Source: [`INSTALL_MINUTES.md`](https://github.com/hpreowned/adlc-kit/blob/v0.1.8/INSTALL_MINUTES.md) at `v0.1.8`. Change it there; `make sync` brings it back.
 
 # Per-tool install cost (operating-cost line for the ADR)
 
