@@ -63,8 +63,8 @@ ADLC="$WORK/uvbin/adlc"
 python3 - "$ROOT/docs/index.md" "$OUT/index.md" "$KIT_REF" "$PILOT_REF" <<'PY'
 import re,sys,pathlib
 s=pathlib.Path(sys.argv[1]).read_text()
-s=re.sub(r'(<!-- adlc:kit-ref -->).*?(<!-- /adlc:kit-ref -->)', rf'\g<1>{sys.argv[3]}\g<2>', s)
-s=re.sub(r'(<!-- adlc:pilot-ref -->).*?(<!-- /adlc:pilot-ref -->)', rf'\g<1>{sys.argv[4][:7]}\g<2>', s)
+s=re.sub(r'(<!-- adlc:kit-ref -->).*?(<!-- /adlc:kit-ref -->)', rf'\g<1>`{sys.argv[3]}`\g<2>', s)
+s=re.sub(r'(<!-- adlc:pilot-ref -->).*?(<!-- /adlc:pilot-ref -->)', rf'\g<1>`{sys.argv[4][:7]}`\g<2>', s)
 pathlib.Path(sys.argv[2]).write_text(s)
 PY
 

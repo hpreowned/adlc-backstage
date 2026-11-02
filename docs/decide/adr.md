@@ -1,9 +1,9 @@
 !!! info "Mirrored, do not edit here"
-    Source: [`DECISION_ADR.md`](https://github.com/hpreowned/adlc-pilot/blob/4a20954466cb08a118eb18ef4674a6d9bc4c9216/DECISION_ADR.md) at `4a20954466cb08a118eb18ef4674a6d9bc4c9216`. Change it there; `make sync` brings it back.
+    Source: [`DECISION_ADR.md`](https://github.com/hpreowned/adlc-pilot/blob/c9473565eb5f4212fb3d154415c8647eb3356801/DECISION_ADR.md) at `c9473565eb5f4212fb3d154415c8647eb3356801`. Change it there; `make sync` brings it back.
 
 # DECISION_ADR.md — repo-context layer for Copilot: adopt, and how
 
-Status: PROPOSED — all tiers complete (315 runs attempted, 306 valid, 2026-10-30). Numbers are
+Status: PROPOSED — all tiers complete (411 runs attempted, 378 valid, 2026-11-01; nine web-008 Tier 3 reruns pending, see Not-completed). Numbers are copied from `results/scorecard.md` (reproduce: `make tier1 tier2 tier3 scorecard`).
 copied from `results/scorecard.md` (reproduce: `make tier1 tier2 tier3 scorecard`).
 
 ## Context

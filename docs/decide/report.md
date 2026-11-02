@@ -1,5 +1,5 @@
 !!! info "Mirrored, do not edit here"
-    Source: [`results/REPORT.md`](https://github.com/hpreowned/adlc-pilot/blob/4a20954466cb08a118eb18ef4674a6d9bc4c9216/results/REPORT.md) at `4a20954466cb08a118eb18ef4674a6d9bc4c9216`. Change it there; `make sync` brings it back.
+    Source: [`results/REPORT.md`](https://github.com/hpreowned/adlc-pilot/blob/c9473565eb5f4212fb3d154415c8647eb3356801/results/REPORT.md) at `c9473565eb5f4212fb3d154415c8647eb3356801`. Change it there; `make sync` brings it back.
 
 # ADLC pilot report — all tiers (2026-10-30)
 
