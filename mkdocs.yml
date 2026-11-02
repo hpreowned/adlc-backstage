@@ -10,6 +10,15 @@ validation:
     unrecognized_links: warn
 plugins:
   - techdocs-core
+markdown_extensions:
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_div_format
+# Standalone `mkdocs serve` only; Backstage strips scripts and renders via the Mermaid TechDocs addon.
+extra_javascript:
+  - https://cdn.jsdelivr.net/npm/mermaid@10.9.1/dist/mermaid.min.js
 nav:
   - Overview: index.md
   - Adopt (engineer, 15 min):

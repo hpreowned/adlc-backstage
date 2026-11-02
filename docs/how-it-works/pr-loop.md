@@ -2,6 +2,27 @@
 
 Nothing about day-to-day work changes except one required check and one file engineers own.
 
+```mermaid
+sequenceDiagram
+    autonumber
+    participant E as Engineer
+    participant A as Copilot CLI (agent)
+    participant PR as Pull request checks
+    participant M as main CI
+    participant P as Project repo CI
+    E->>A: branch, prompt
+    A->>A: read AGENTS.md + routing, run adlc stale
+    A-->>E: code (+ AGENTS.md edits if conventions changed)
+    E->>PR: open PR
+    PR->>PR: adlc-contract-lint (required)
+    PR-->>E: red when a path is missing, the kit block was edited or a pin is broken
+    E->>M: merge
+    M->>M: adlc baseline --no-viz, stamp, commit graphify-out + memories [skip ci]
+    M->>P: dispatch adlc-member-baseline
+    P->>P: adlc federate (project graph)
+    Note over M,P: nightly adlc-drift · weekly adlc-regress → scorecard artifact
+```
+
 | when | what runs | who writes what |
 |---|---|---|
 | on a branch | Copilot CLI reads `AGENTS.md` and the routing section on its own | engineer and agent write code; the agent may run `adlc baseline --incremental` locally and must not commit it |

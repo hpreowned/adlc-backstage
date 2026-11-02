@@ -12,6 +12,30 @@ it helps. One CLI, `adlc`, and nothing outside the repo.
 Pages marked *Mirrored* are copied from those sources at those refs by `make sync`; CI fails
 if they drift. Edit them at the source.
 
+## How the pieces relate
+
+```mermaid
+flowchart TB
+    KIT[adlc-kit\nCLI · templates · reusable workflows\ntag v0.1.7]
+    DOCS[adlc-backstage\nthis site · catalog · onboarding template\nmirrors kit at kit.ref]
+    PILOT[adlc-pilot\nharness · 29 tasks · 378 valid runs · ADR]
+    subgraph repos[Onboarded repos]
+        R1[kestrel-services\nJava · Python · C#]
+        R2[kestrel-web\nTypeScript]
+        R3[kestrel-ops]
+        R4[kestrel-notify\nPython]
+    end
+    PROJ[project repo\nproject-graph.json]
+    ORG[org .github-private\norg-graph.json]
+    KIT -- adlc init --> repos
+    KIT -- workflows @tag --> repos
+    repos -- adlc federate --> PROJ --> ORG
+    PILOT -- measures --> KIT
+    KIT -. sync .-> DOCS
+    PILOT -. sync .-> DOCS
+    BS((Backstage)) -- TechDocs + template --> DOCS
+```
+
 ## Pick your path
 
 | you are | start here | time |

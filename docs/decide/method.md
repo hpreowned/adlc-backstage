@@ -2,6 +2,22 @@
 
 How a number in the ADR was produced, so you can decide how much to trust it.
 
+```mermaid
+flowchart LR
+    T[29 tasks\nrubric + overlay test] --> X
+    AR[7 arms\nflags · denied tools · hooks · routing] --> X
+    X{{task × arm × 3 runs}} --> WC[prepare working copy\nstrip/inject context layer]
+    WC --> C[copilot -p … headless\nCOPILOT_HOME isolated]
+    C --> EV[events.jsonl\ntokens · calls · premium · tool calls]
+    C --> ANS[answer / diff]
+    ANS --> J[arm-blind judge\n+ overlay tests for edits]
+    EV --> REC[record.json → results/*.jsonl]
+    J --> REC
+    REC --> V{valid?}
+    V -- no --> INV[listed as invalid\nnever pooled]
+    V -- yes --> SC[scorecard\np50 / p90 per arm · ADR]
+```
+
 **Repos.** Four synthetic repos built to look like one company's estate: `kestrel-services`
 (Java booking, Python gateway, C# pricing), `kestrel-web` (TypeScript), `kestrel-ops`,
 `kestrel-notify` (Python). Real build and test suites in each, so edit tasks can be judged by

@@ -17,6 +17,15 @@ The values are the same ones `adlc doctor` prints on its first line (`schema 1, 
 context graphify,serena`). Keep them in sync when the kit bumps; the Renovate PR is the
 natural place.
 
+## Backstage prerequisites for this site
+
+| need | why |
+|---|---|
+| TechDocs with `techdocs-core` (default builder) | strict build parity with CI |
+| `backstage-plugin-techdocs-addon-mermaid` in `packages/app` | renders the swimlane, state and flow diagrams; without it they show as text |
+| `@backstage/plugin-scaffolder-backend-module-github` and `actions: write` on the docs repo | the onboarding template dispatches a workflow |
+| register `catalog-info.yaml` by `url:` | a `file:` location lets the local builder patch `mkdocs.yml` in the source tree |
+
 ## Phase 2, not built
 
 A component card showing kit version, graph freshness and last regress result. Rule for

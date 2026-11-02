@@ -2,6 +2,36 @@
 
 Everything is in git, in the repo it describes. Nothing lives in `~/.copilot` or on a laptop.
 
+```mermaid
+flowchart LR
+    subgraph humans[Engineers write]
+        AG[AGENTS.md\nprose: build · test · conventions]
+        ADR[ADRs / runbooks\nat the paths AGENTS.md names]
+    end
+    subgraph kit[adlc init writes]
+        RT[routing section\nkit-owned]
+        MCP[.mcp.json + .serena/\nper service]
+        SK[.github/skills/graphify\nlean, 2 KB]
+        WF[.github/workflows/adlc.yml]
+    end
+    subgraph ci[CI on main writes]
+        G[graphify-out/graph.json\nstamped with commit]
+        MEM[.serena/memories/adlc_*.md\nderived, read-only to agent]
+        PG[project-graph.json]
+        OG[org-graph.json]
+    end
+    AG --> RT
+    AG --> MEM
+    ADR --> G
+    G --> MEM
+    G --> PG --> OG
+    WF --> G
+    A((Copilot CLI)) -.reads.-> AG & RT & SK
+    A -.queries.-> G & PG & OG
+    A -.LSP.-> MCP
+    A -.read_memory.-> MEM
+```
+
 | layer | file | written by | holds |
 |---|---|---|---|
 | contract | `AGENTS.md` (+ one per service in polyglot repos) | engineers, by hand | build, test, lint, run commands; conventions; what not to touch; where ADRs and runbooks live |

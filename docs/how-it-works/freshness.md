@@ -3,6 +3,20 @@
 The graph is a committed artifact stamped with the commit it was built from. `adlc stale`
 compares that stamp to `HEAD`.
 
+```mermaid
+stateDiagram-v2
+    [*] --> Missing: repo onboarded, no baseline yet
+    Missing --> Fresh: adlc baseline (CI on main)
+    Fresh --> Usable: merge lands (HEAD ahead of stamp, ≤ 10 commits)
+    Usable --> Fresh: adlc-baseline job completes
+    Usable --> Stale: > 10 commits behind (baseline job failing or disabled)
+    Stale --> Fresh: adlc baseline
+    note right of Fresh: exit 0 — use the graph
+    note right of Usable: exit 1 — use it, expect small gaps
+    note right of Stale: exit 2 — rebuild or fall back to grep
+    note left of Missing: exit 2
+```
+
 | exit | meaning | agent behaviour |
 |---|---|---|
 | 0 | fresh: stamp == HEAD | use the graph |

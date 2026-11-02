@@ -3,6 +3,23 @@
 The **Onboard a repo to ADLC** template does steps 0, 1 and 3 of the adoption guide for you
 and opens the pull request. You still do step 2: fill the prose in `AGENTS.md`.
 
+```mermaid
+sequenceDiagram
+    participant U as Engineer
+    participant B as Backstage scaffolder
+    participant W as adlc-onboard workflow<br/>(adlc-backstage repo)
+    participant T as Target repo
+    U->>B: Create → "Onboard a repo to ADLC" (repo, kit tag, skill profile)
+    B->>W: github:actions:dispatch
+    W->>W: uv tool install adlc-kit@tag
+    W->>T: clone (ADLC_ONBOARD_TOKEN)
+    W->>W: adlc init --yes · adlc lint · adlc doctor
+    W->>T: push adlc/onboard-<tag>, open PR (body = doctor output)
+    T-->>U: PR link
+    U->>T: fill AGENTS.md TODOs, merge
+    T->>T: adlc-baseline on main
+```
+
 1. Backstage → Create → *Onboard a repo to ADLC*.
 2. Pick the repository. Leave the kit version at the default unless the platform team told
    you otherwise. Leave the skill profile on `lean`.
