@@ -1,0 +1,53 @@
+# Scaffolder template: "Onboard a repo to ADLC". No custom Backstage code — it dispatches
+# the adlc-onboard workflow in this repo, which runs `adlc init` and opens the PR.
+apiVersion: scaffolder.backstage.io/v1beta3
+kind: Template
+metadata:
+  name: adlc-onboard
+  title: Onboard a repo to ADLC
+  description: Runs `adlc init` on an existing GitHub repo and opens a pull request with the contract layer.
+  tags: [copilot, developer-experience]
+spec:
+  owner: group:default/platform-team
+  type: service
+  parameters:
+    - title: Target repository
+      required: [repoUrl]
+      properties:
+        repoUrl:
+          title: Repository
+          type: string
+          ui:field: RepoUrlPicker
+          ui:options:
+            allowedHosts: [github.com]
+    - title: Options
+      properties:
+        kitRef:
+          title: Kit version
+          type: string
+          default: v0.1.7
+          description: Git tag of hpreowned/adlc-kit. Keep the default unless the platform team says otherwise.
+        skillProfile:
+          title: Graphify skill profile
+          type: string
+          default: lean
+          enum: [lean, vendor]
+          description: lean is the kit default (−31 % tokens vs vendor in the pilot).
+  steps:
+    - id: dispatch
+      name: Dispatch adlc-onboard workflow
+      action: github:actions:dispatch
+      input:
+        repoUrl: github.com?owner=hpreowned&repo=adlc-backstage
+        workflowId: adlc-onboard.yml
+        branchOrTagName: main
+        workflowInputs:
+          target_repo: ${{ (parameters.repoUrl | parseRepoUrl).owner }}/${{ (parameters.repoUrl | parseRepoUrl).repo }}
+          kit_ref: ${{ parameters.kitRef }}
+          skill_profile: ${{ parameters.skillProfile }}
+  output:
+    links:
+      - title: Pull requests on the target repo
+        url: https://github.com/${{ (parameters.repoUrl | parseRepoUrl).owner }}/${{ (parameters.repoUrl | parseRepoUrl).repo }}/pulls
+      - title: Workflow run log
+        url: https://github.com/hpreowned/adlc-backstage/actions/workflows/adlc-onboard.yml

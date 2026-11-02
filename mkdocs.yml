@@ -1,0 +1,42 @@
+site_name: ADLC
+site_description: Make a repo agent-ready — contract, context layer, guardrails, measurement — for GitHub Copilot CLI.
+repo_url: https://github.com/hpreowned/adlc-backstage
+edit_uri: edit/main/docs/
+docs_dir: docs
+strict: true
+validation:
+  links:
+    not_found: warn
+    unrecognized_links: warn
+plugins:
+  - techdocs-core
+nav:
+  - Overview: index.md
+  - Adopt (engineer, 15 min):
+      - Onboard a repo: adopt/index.md
+      - Onboard from Backstage: adopt/from-backstage.md
+  - How it works:
+      - The PR loop: how-it-works/pr-loop.md
+      - Where knowledge lives: how-it-works/knowledge-map.md
+      - Context routing: how-it-works/routing.md
+      - Freshness: how-it-works/freshness.md
+      - Guardrails: how-it-works/guardrails.md
+  - Operate (platform team):
+      - Reusable workflows: operate/workflows.md
+      - Pins and upgrades: operate/pins-and-upgrades.md
+      - Catalog annotations: operate/annotations.md
+      - Onboarding workflow and token: operate/onboard-workflow.md
+      - Runbook: operate/runbook.md
+      - Install costs: operate/install-costs.md
+  - Decide (leads):
+      - Verdict: decide/index.md
+      - Method: decide/method.md
+      - Known limits: decide/limits.md
+      - ADR: decide/adr.md
+      - Pilot report: decide/report.md
+  - Reference:
+      - CLI: reference/cli.md
+      - Context contract: reference/contract.md
+      - Pins: reference/pins.md
+      - Events schema: reference/events-schema.md
+      - Changelog: reference/changelog.md

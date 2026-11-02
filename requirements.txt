@@ -1,0 +1,2 @@
+# Backstage's TechDocs builder uses mkdocs-techdocs-core; pin the same here so local == CI == Backstage.
+mkdocs-techdocs-core==1.5.4

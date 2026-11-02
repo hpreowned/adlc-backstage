@@ -1,0 +1,38 @@
+# Dispatched by the Backstage template (or by hand). Clones the target repo, runs `adlc init`,
+# lints, pushes a branch and opens the PR. Needs secret ADLC_ONBOARD_TOKEN: a fine-grained PAT
+# with Contents: write and Pull requests: write on the repos you intend to onboard. Env only.
+name: adlc-onboard
+on:
+  workflow_dispatch:
+    inputs:
+      target_repo: { description: "owner/repo to onboard", required: true, type: string }
+      kit_ref: { description: "kit tag", required: false, default: v0.1.7, type: string }
+      skill_profile: { description: "lean | vendor", required: false, default: lean, type: string }
+jobs:
+  onboard:
+    runs-on: ubuntu-latest
+    env:
+      GRAPHIFY_BACKEND: none
+      GH_TOKEN: ${{ secrets.ADLC_ONBOARD_TOKEN }}
+    steps:
+      - uses: astral-sh/setup-uv@v5
+      - run: uv tool install --python 3.12 "git+https://github.com/hpreowned/adlc-kit@${{ inputs.kit_ref }}"
+      - name: clone target
+        run: gh repo clone "${{ inputs.target_repo }}" target -- --depth 1
+      - name: adlc init + lint
+        working-directory: target
+        run: |
+          adlc init --yes --skill-profile "${{ inputs.skill_profile }}"
+          adlc lint
+          adlc doctor > ../doctor.txt || true
+      - name: branch, commit, PR
+        working-directory: target
+        run: |
+          git config user.name "adlc-onboard"; git config user.email "adlc-onboard@users.noreply.github.com"
+          b="adlc/onboard-${{ inputs.kit_ref }}"
+          git checkout -b "$b" && git add -A
+          git diff --cached --quiet && { echo "nothing to onboard (already on ${{ inputs.kit_ref }})"; exit 0; }
+          git commit -m "adlc init: contract layer (kit ${{ inputs.kit_ref }}, skill ${{ inputs.skill_profile }})"
+          git push -u origin "$b"
+          { echo "Opened from Backstage (adlc-onboard). Fill the TODOs in AGENTS.md, then merge."; echo; echo '```'; cat ../doctor.txt; echo '```'; } > ../body.md
+          gh pr create --title "adlc init: contract layer (kit ${{ inputs.kit_ref }})" --body-file ../body.md --head "$b"

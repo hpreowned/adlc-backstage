@@ -1,0 +1,64 @@
+# Register this file's URL in Backstage. Replace group:default/platform-team with the owning team.
+apiVersion: backstage.io/v1alpha1
+kind: Group
+metadata:
+  name: platform-team
+  description: Placeholder owner. Replace with the real platform/devex group entity.
+spec:
+  type: team
+  children: []
+---
+apiVersion: backstage.io/v1alpha1
+kind: System
+metadata:
+  name: adlc
+  title: ADLC — agent-ready repos for Copilot CLI
+  description: Context contract, context layer, guardrails and measurement for GitHub Copilot CLI.
+  annotations:
+    backstage.io/techdocs-ref: dir:.
+  links:
+    - url: https://github.com/hpreowned/adlc-kit
+      title: Kit source
+    - url: https://github.com/hpreowned/adlc-pilot
+      title: Pilot (evidence, ADR)
+spec:
+  owner: group:default/platform-team
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: adlc-kit
+  title: adlc CLI
+  description: The one CLI teams learn — init, doctor, lint, baseline, stale, eval, regress, scorecard.
+  annotations:
+    backstage.io/source-location: url:https://github.com/hpreowned/adlc-kit/tree/main/
+    backstage.io/techdocs-ref: url:https://github.com/hpreowned/adlc-backstage/tree/main/
+    github.com/project-slug: hpreowned/adlc-kit
+  tags: [cli, copilot, developer-experience]
+spec:
+  type: tool
+  lifecycle: experimental
+  owner: group:default/platform-team
+  system: adlc
+---
+apiVersion: backstage.io/v1alpha1
+kind: Resource
+metadata:
+  name: adlc-scorecard
+  title: ADLC scorecard
+  description: Weekly regress results per repo (uploaded artifact) and the pilot's committed scorecard.
+  links:
+    - url: https://github.com/hpreowned/adlc-pilot/blob/main/results/scorecard.md
+      title: Pilot scorecard (committed, dated inside)
+spec:
+  type: dashboard
+  owner: group:default/platform-team
+  system: adlc
+---
+apiVersion: backstage.io/v1alpha1
+kind: Location
+metadata:
+  name: adlc-templates
+spec:
+  targets:
+    - ./templates/adlc-onboard/template.yaml
